@@ -1,0 +1,22 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+
+<h2>Tópico: {{ topic }} </h2>
+<h3>Anotações: </h3>
+<ul>
+    {% for entry in entries %}
+    <li>
+        {{ entry.date_added | date:"M, Y d:i" }}
+        {{ entry.text | linebreaks }}
+    </li>
+    {% empty %}
+    <li>
+        Não há anotações aqui...
+    </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'delete_topic' topic.id %}">
+    Deletar Tópico
+</a>
+{% endblock content %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Logs</title>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'index' %}">
+            Learning Logs
+        </a> <br>
+        <a href="{% url 'topics' %}">
+            Tópicos
+        </a>
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+    
+    <footer>
+        <p>
+            Learning logs 2026 - todos os direitos reservados
+        </p>
+    </footer>
+</body>
+</html>
