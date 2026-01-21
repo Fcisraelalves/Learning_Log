@@ -7,8 +7,14 @@
 <ul>
     {% for entry in entries %}
     <li>
-        {{ entry.date_added | date:"M, Y d:i" }}
-        {{ entry.text | linebreaks }}
+        {{ entry.date_added | date:"M d, Y H:i" }}
+        {{ entry.text | linebreaks }} <br>
+        <a href="{% url 'edit_entry' entry.id %}">
+            Editar Anotação
+        </a> - 
+        <a href="{% url 'delete_entry' entry.id %}">
+            Excluir Anotação
+        </a>
     </li>
     {% empty %}
     <li>

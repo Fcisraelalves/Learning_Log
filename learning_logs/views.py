@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .models import Topic
+from .models import Topic, Entry
 from .forms import TopicForm, EntryForm
 
 # Create your views here.
@@ -60,4 +60,24 @@ def new_entry(request, topic_id):
                'topic' : topic}
     return render(request, "learning_logs/new_entry.html", context)
 
+def edit_entry(request, entry_id):
+    entry = Entry.objects.get(id=entry_id)
+    topic = entry.topic
+    if request.method == 'POST':
+        form = EntryForm(instance=entry, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('topic', args=[topic.id]))
+    else:
+        form = EntryForm(instance=entry)
+
+    context = {'entry' : entry,
+               'form' : form}
     
+    return render(request, "learning_logs/edit_entry.html", context)
+        
+def delete_entry(request, entry_id):
+    entry = Entry.objects.get(id=entry_id)
+    topic = entry.topic
+    entry.delete()
+    return HttpResponseRedirect(reverse('topic', args=[topic.id]))
