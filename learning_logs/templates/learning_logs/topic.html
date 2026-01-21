@@ -16,6 +16,9 @@
     </li>
     {% endfor %}
 </ul>
+<a href="{% url 'new_entry' topic.id %}">
+    Adicionar anotação
+</a> <br>
 <a href="{% url 'delete_topic' topic.id %}">
     Deletar Tópico
 </a>

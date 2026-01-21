@@ -56,7 +56,8 @@ def new_entry(request, topic_id):
     else:
         form = EntryForm()
 
-    context = {'form' : form}
+    context = {'form' : form,
+               'topic' : topic}
     return render(request, "learning_logs/new_entry.html", context)
 
     
