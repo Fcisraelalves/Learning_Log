@@ -6,12 +6,12 @@ from .forms import TopicForm, EntryForm
 
 # Create your views here.
 def index(request):
-    return render(request, "learning_logs/index.html")
+    return render(request, 'learning_logs/index.html')
 
 def topics(request):
     topics = Topic.objects.all()
     context = {'topics' : topics}
-    return render(request, "learning_logs/topics.html", context)
+    return render(request, 'learning_logs/topics.html', context)
 
 def topic(request, topic_id):
     topic = Topic.objects.get(id=topic_id)
@@ -22,7 +22,7 @@ def topic(request, topic_id):
         'entries' : entries
     }
 
-    return render(request, "learning_logs/topic.html", context)
+    return render(request, 'learning_logs/topic.html', context)
 
 def new_topic(request):
     
@@ -35,7 +35,7 @@ def new_topic(request):
         form = TopicForm()
     
     context = {'form' : form}
-    return render(request, "learning_logs/new_topic.html", context)
+    return render(request, 'learning_logs/new_topic.html', context)
 
 def delete_topic(request, topic_id):
     topic = Topic.objects.get(id=topic_id)
@@ -58,7 +58,7 @@ def new_entry(request, topic_id):
 
     context = {'form' : form,
                'topic' : topic}
-    return render(request, "learning_logs/new_entry.html", context)
+    return render(request, 'learning_logs/new_entry.html', context)
 
 def edit_entry(request, entry_id):
     entry = Entry.objects.get(id=entry_id)
@@ -74,7 +74,7 @@ def edit_entry(request, entry_id):
     context = {'entry' : entry,
                'form' : form}
     
-    return render(request, "learning_logs/edit_entry.html", context)
+    return render(request, 'learning_logs/edit_entry.html', context)
         
 def delete_entry(request, entry_id):
     entry = Entry.objects.get(id=entry_id)
