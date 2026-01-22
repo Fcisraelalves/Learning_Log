@@ -12,7 +12,23 @@
         </a> <br>
         <a href="{% url 'topics' %}">
             Tópicos
+        </a> <br>
+        {% if user.is_authenticated %}
+            <p>
+                Olá, {{ user.username }}!
+            </p>
+            <a href="{% url 'logout' %}">
+                Sair
+            </a>
+        {% else %}
+        <a href="{% url 'login' %}">
+            Entrar
+        </a> <br>
+        <a href="{% url 'register' %}">
+            Registrar-se
         </a>
+        {% endif %}
+
     </nav>
 
     <main>
