@@ -8,7 +8,8 @@
     {% for entry in entries %}
     <li>
         {{ entry.date_added | date:"M d, Y H:i" }}
-        {{ entry.text | linebreaks }} <br>
+        {{ entry.text | linebreaks }} 
+        Última alteração: {{ entry.last_edited_time | date:"M d, Y H:i" }} <br>
         <a href="{% url 'edit_entry' entry.id %}">
             Editar Anotação
         </a> - 
